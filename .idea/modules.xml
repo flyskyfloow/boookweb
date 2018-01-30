@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/boookweb.iml" filepath="$PROJECT_DIR$/.idea/boookweb.iml" />
+      <module fileurl="file://E:\mybooksearch\.idea\mybooksearch.iml" filepath="E:\mybooksearch\.idea\mybooksearch.iml" />
+    </modules>
+  </component>
+</project>

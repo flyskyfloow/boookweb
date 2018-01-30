@@ -1,0 +1,111 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图书搜索系统</title>
+    <link rel="icon" href="{% static 'SSRN/images/fh.jpg' %}">
+{#    加载静态文件css#}
+    <link rel="stylesheet" type="text/css" href="{% static 'SSRN/style.css' %}" />
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body style="text-align: center";>
+<div class="container">
+<h2 class="text-center" style="color: #2aabd2">  ssrn 论文排名</h2>
+{#<img src="{% static 'SSRN/images/fh.jpg' %}" />#}
+<span>
+        共{{paper_pages.count}}篇博文。当前第{{papers.number}}页，共{{paper_pages.num_pages}}页
+</span>
+<table class="table table-bordered  table-hover table-condensed">
+    <caption>基本的表格布局</caption>
+    <thead>
+        <tr class="info">
+            <th>作者</th>
+            <th>简介</th>
+            <th>下载排名</th>
+            <th>下载链接</th>
+            <th>在线查看</th>
+            <th>点击下载</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in papers %}
+        <tr>
+            <td>{{ i.author }}</td>
+            <td>{{ i.title }}</td>
+            <td>{{ i.downloads }}</td>
+            <td> http://192.168.1.160/static/SSRN/ssrnPdf/SSRN-id2900447.pdf </td>
+{#            <td> http://192.168.1.160/static/SSRN/ssrnPdf/SSRN-id{{ i.gid}}.pdf </td>#}
+{#            <td>{{ i.link }} </td>#}
+            <td><a href=http://192.168.1.160/ssrnPdf/SSRN-id2900447.pdf><span> check </span> </a></td>
+            <td><a href="http://192.168.1.160/ssrnPdf/SSRN-id2900447.pdf" download="SSRN-id2900447.pdf"><span class="glyphicon glyphicon-save"></span></a></td>
+{#            <td><a href={{ i.link }}><span class="glyphicon glyphicon-save"></span></a></td>#}
+{#            <td><span class="glyphicon glyphicon-save"></span></td>#}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{# 分页部分 #}
+    <ul class="pagination">
+        <li> <button>  上一页 </button></li>
+        {# 上一页，这里需要用到has_previous方法判断是否有上一页 #}
+        <li>
+            <a href="?page=
+                {% if papers.has_previous %}
+                    {{papers.previous_page_number}}
+                {% else %}
+                    {{papers.number}}
+                {% endif %}
+            " aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li id = 2><a href="?page={{papers.number}}">{{papers.number}}</a></li>
+        {# 下一页，这里需要用到has_next方法判断是否有下一页 #}
+        <li>
+            <a href="?page=
+                {% if papers.has_next %}
+                    {{papers.next_page_number}}
+                {% else %}
+                    {{papers.number}}
+                {% endif %}
+            " aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        <li><button> 下一页</button></li>
+    </ul>
+
+</div>
+{#    页面导航处理#}
+    <script>
+        function addlia( pg) {
+            var testa = document.createElement('a');
+            testa.setAttribute("href","?page=" + pg );
+            var node = document.createTextNode(pg);
+            testa.appendChild(node);
+            var element = document.getElementsByTagName("li")[1];
+            element.appendChild(testa);
+
+        }
+        var num = {{ papers.number }};
+        var allmun = {{ paper_pages.num_pages }};
+        for(var i=1;i<5;i++){
+             var n = num +i;
+             difnum = allmun - n;
+             if(difnum>=0){
+                 addlia(n);
+             }
+
+        }
+    </script>
+
+</body>
+</html>

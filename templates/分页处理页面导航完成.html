@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书搜索系统</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+<p> 文档资料</p>
+{#    {% for i in listpaper %}#}
+{#    {{ i.title }} ------ {{ i.gid }}---{{ i.author }} --{{ i.downloads }}----{{ i.gid }}<br>#}
+{#    {% endfor %}#}
+<table class="table">
+    <caption>基本的表格布局</caption>
+    <thead>
+        <tr>
+            <th>作者</th>
+            <th>简介</th>
+            <th>下载排名</th>
+            <th>下载链接</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in papers %}
+        <tr>
+            <td>{{ i.author }}</td>
+            <td>{{ i.title }}</td>
+            <td>{{ i.downloads }}</td>
+            <td>{{ i.link }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{# 分页部分 #}
+<div style="background: crimson">
+    <span class="btn-lg">
+        共{{paper_pages.count}}篇博文。当前第{{papers.number}}页，共{{paper_pages.num_pages}}页
+    </span>
+    <ul class="pagination">
+        {# 上一页，这里需要用到has_previous方法判断是否有上一页 #}
+        <li>
+            <a href="?page=
+                {% if papers.has_previous %}
+                    {{papers.previous_page_number}}
+                {% else %}
+                    {{papers.number}}
+                {% endif %}
+            " aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+{##}
+{##}
+        <li id = 2><a href="?page={{papers.number}}">{{papers.number}}</a></li>
+{#                <li><a href="?page={{papers.number| add:1}}">{{papers.number|add:"1"}}</a></li>#}
+{#                <li><a href="?page={{papers.number| add:"2"}}">{{papers.number|add:"2"}}</a></li>#}
+{#                <li><a href="?page={{papers.number| add:"3"}}">{{papers.number|add:"3"}}</a></li>#}
+{#                <li><a href="?page={{papers.number| add:"4"}}">{{papers.number|add:"4"}}</a></li>#}
+{#                <li><a href="?page={{papers.number| add:"5"}}">{{papers.number|add:"5"}}</a></li>#}
+
+
+
+        {# 下一页，这里需要用到has_next方法判断是否有下一页 #}
+        <li>
+            <a href="?page=
+                {% if papers.has_next %}
+                    {{papers.next_page_number}}
+                {% else %}
+                    {{papers.number}}
+                {% endif %}
+            " aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <script>
+        function addlia( pg) {
+{#            var para = document.createElement('li');#}
+            var testa = document.createElement('a');
+            testa.setAttribute("href","?page=" + pg );
+            var node = document.createTextNode(pg);
+            testa.appendChild(node);
+            var element = document.getElementsByTagName("li")[1];
+            element.appendChild(testa);
+
+        }
+        var num = {{ papers.number }};
+        var allmun = {{ paper_pages.num_pages }};
+        for(var i=1;i<5;i++){
+             var n = num +i;
+             difnum = allmun - n;
+             if(difnum>=0){
+                 addlia(n);
+             }
+
+        }
+    </script>
+
+{#分页显示行#}
+    <ul class="pager">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+</body>
+</html>

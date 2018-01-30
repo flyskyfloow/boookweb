@@ -1,0 +1,17 @@
+# 以下为ssrnDB的建表语句
+CREATE TABLE IF NOT EXISTS `ssrnpaper`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `gid` int(10) NOT NULL UNIQUE,
+   `title` VARCHAR(255) ,
+   `author` VARCHAR(255) ,
+   `link` VARCHAR(255) ,
+   `downloads` int(10),
+    PRIMARY KEY ( id )
+) DEFAULT CHARSET=utf8;
+
+
+******************* mysql 避免重复插入*******************
+1.创建唯一索引(双主键也 ok 不重复字段 添加 )
+sq = "INSERT IGNORE INTO ssrnpaper (gid ,title, author, link, downloads) VALUES "
+2.更新已存在
+REPLACE　INTO ssrnpaper (gid ,title, author, link, downloads) VALUES "

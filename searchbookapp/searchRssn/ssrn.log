@@ -1,0 +1,19 @@
+
+11/10/2017 11:00:26 AM - DEBUG - Starting new HTTP connection (1): www.cnblogs.com
+11/10/2017 11:00:26 AM - DEBUG - http://www.cnblogs.com:80 "GET /yyds/p/6901864.html111 HTTP/1.1" 301 165
+11/10/2017 11:00:26 AM - DEBUG - http://www.cnblogs.com:80 "GET /yyds/p/6901864.html HTTP/1.1" 200 None
+11/10/2017 11:00:26 AM - DEBUG - Starting new HTTPS connection (1): hq.ssrn.com
+11/10/2017 11:00:30 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/Ranking_display.cfm?npage=1&RequestTimeout=5000&TMY_gID=2&TRN_gID=10&runid=70198 HTTP/1.1" 200 None
+11/10/2017 11:00:30 AM - ERROR -  wu fan fang wen yi mian
+11/10/2017 11:01:38 AM - DEBUG - Starting new HTTPS connection (1): hq.ssrn.com
+11/10/2017 11:01:41 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/loginAjax.cfm?login=true&username=2373808611@qq.com&pass=502302555&forwardURL=https%3A%2F%2Fhq.ssrn.com%2Frankings%2FRanking_display.cfm%3FTRN_gID%3D10 HTTP/1.1" 200 None
+11/10/2017 11:01:43 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/Ranking_display.cfm?npage=1&RequestTimeout=5000&TMY_gID=2&TRN_gID=10&runid=70198 HTTP/1.1" 200 None
+11/10/2017 11:01:44 AM - ERROR -  wu fan fang wen yi mian
+11/10/2017 11:03:09 AM - DEBUG - Starting new HTTPS connection (1): hq.ssrn.com
+11/10/2017 11:03:11 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/loginAjax.cfm?login=true&username=2373808611@qq.com&pass=502302555&forwardURL=https%3A%2F%2Fhq.ssrn.com%2Frankings%2FRanking_display.cfm%3FTRN_gID%3D10 HTTP/1.1" 200 None
+11/10/2017 11:03:14 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/Ranking_display.cfm?npage=1&RequestTimeout=5000&TMY_gID=2&TRN_gID=10&runid=70198 HTTP/1.1" 200 None
+11/10/2017 11:03:20 AM - ERROR -  wu fan fang wen yi mian
+11/10/2017 11:04:49 AM - DEBUG - Starting new HTTPS connection (1): hq.ssrn.com
+11/10/2017 11:04:52 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/loginAjax.cfm?login=true&username=2373808611@qq.com&pass=502302555&forwardURL=https%3A%2F%2Fhq.ssrn.com%2Frankings%2FRanking_display.cfm%3FTRN_gID%3D10 HTTP/1.1" 200 None
+11/10/2017 11:04:54 AM - DEBUG - https://hq.ssrn.com:443 "GET /rankings/Ranking_display.cfm?npage=1&RequestTimeout=5000&TMY_gID=2&TRN_gID=10&runid=70198 HTTP/1.1" 200 None
+11/10/2017 11:04:57 AM - ERROR -  wu fan fang wen yi mian

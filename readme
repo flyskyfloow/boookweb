@@ -1,0 +1,60 @@
+web 框架
+nginx + uwsgi + django
+******************** nginx ******************
+安装 nginx
+yum -y install epel-release
+yum install nginx
+******************* uwsgi *******************
+install uwsgi
+pip install uwsgi
+
+web test
+uwsgi --http 192.168.1.160:8000 --wsgi-file test.py
+
+test.py 文件放在django文件目录下
+访问浏览器
+192.168.1.160:8000 页面有 输出（返回hello world）
+******************** django ******************
+
+pip install -v  Django==1.11.6 (使用1.11.6版本 , 2.0 连接mysql 客户端版本过低)
+
+
+
+*********************  scrapy  *****************
+环境：
+anacoda3 - python 3.6.3
+安装（根据提示命令进行安装）
+yum install bzip2
+scrapy（在anacoda3 中）
+
+注释：安装完成后不需要处理 yum的python 可以正常使用
+
+****************** django + uwsgi 测试 *****************************
+uwsgi --http :8001 --chdir /home/mydownload/boookweb/searchbookapp --wsgi-file boookweb/wsgi.py --master
+ --processes 4 --threads 2 --stats 0.0.0.0:9191
+
+
+/home/mydownload/boookweb/searchbookapp(app 路径)
+启动无报错及正常
+
+***************  django + uwsgi + nginx **************
+注意事项 关闭 selinux （否则出现拒绝访问）
+
+使用 nohup 进行程序后台运行 日志默认输出位置 nohup.out
+nohup uwsgi --ini boook_uwsgi.ini &
+
+********** 整体启动过程*********
+1. 进入 虚拟环境
+cd /usr/local/virwsgs_python3
+source bin/activate
+2. 启动 uwsgi
+nohup uwsgi --ini boook_uwsgi.ini &
+3.退出虚拟环境
+deactivate
+4.启动 nginx
+systemctl restart nginx
+
+访问web 测试 ok
+
+*********************** pycharm 中使用绝对路径进行项目运行***********************
+C:\Users\ZT\AppData\Local\Programs\Python\Python35\python.exe
